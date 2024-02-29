@@ -1,31 +1,33 @@
-package com.csc311hw.csc311hw2;
+package com.csc311hw.csc311hw2.controllers;
 
-
+import com.csc311hw.csc311hw2.DBController;
+import com.csc311hw.csc311hw2.model.Guess;
 import javafx.animation.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
-import javafx.scene.transform.Translate;
 import javafx.util.Duration;
 
-import java.io.File;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Random;
 import java.util.ResourceBundle;
-import java.sql.*;
-public class AppController implements Initializable {
+
+/**
+ * This class contains methods to handle incoming requests from clients
+ * interacting with the GuessingGame.fxml file.
+ * @author Amaurys De Los Santos Mendez
+ */
+public class AppController {
 
     private Connection conn = null;
     private String dbFilePath = ".//Guesses.accdb";
@@ -61,23 +63,49 @@ public class AppController implements Initializable {
     @FXML
     private Button guessButton;
 
-
+    /**
+     * Closes the application.
+     */
     @FXML
-    void exitMenuItem(ActionEvent event) {
+    void exitMenuItem() {
         System.exit(0);
     }
 
+    /**
+     * Calls {@link DBController#clearAllDBData(Connection)} to the clear the database.
+     * Clears the listView.
+     * Calls {@link Guess#reset()} to clear the total number of guesses
+     * and correct guesses in the {@link Guess} class.
+     * Calls {@link #updateCounters()} to clear the textFields that contain
+     * the total number of guesses and correct guesses.
+     */
     @FXML
-    void newGameMenuItem(ActionEvent event) {
+    void newGameMenuItem() {
         DBController.clearAllDBData(conn);
         listViewFromDB.getItems().clear();
         Guess.reset();
         updateCounters();
     }
 
-
+    /**
+     * Plays the game.
+     * Once a user picks a choice, flips a coin (0 or 1).
+     * Depending on the flip of that coin, we choose what is the correct shape is.
+     * If the shape chosen by the flip of the coin matches the shape chosen by the player,
+     * an animation is played depending on the shape chosen by the player.
+     * GREEN if they chose correctly.
+     * RED if they chose incorrectly.
+     * Then calls {@link DBController#insertDataToDB(Connection, Guess)}
+     * to add the {@link Guess} to the database.
+     * Then calls {@link #updateCounters()} to update the text fields
+     * containing the total guess counter and correct guesses.
+     */
     @FXML
-    void guessButton(ActionEvent event) {
+    void guessButton() {
+        if(toggleGroup.getSelectedToggle() == null){
+            return;
+        }
+
         Random rand = new Random();
         int num = rand.nextInt(0,2);
         Guess guess;
@@ -94,24 +122,39 @@ public class AppController implements Initializable {
 
     }
 
+    /**
+     * Updates the listView using information from the database.
+     * <p>
+     * Calls {@link Guess#reset()} to reset the static guess information.
+     * Calls {@link DBController#getData(Connection)} to get a list of guesses,
+     * then inputs them into a linkedList({@link #guesses}), in this class.
+     * This then clears the listView and adds the new linkedList of guesses.
+     */
     @FXML
-    void showGuessButton(ActionEvent event) {
+    void showGuessButton() {
         Guess.reset();
         guesses = DBController.getData(conn);
         listViewFromDB.getItems().clear();
         listViewFromDB.getItems().addAll(guesses);
     }
 
-    public void fillAppWithData(){
-        Guess.reset();
-        guesses = DBController.getData(conn);
-        updateCounters();
-    }
-
+    /**
+     * Updates the total guess counter and
+     * correct guess counter being displayed on the application.
+     */
     public void updateCounters(){
         totalGuessCount.setText(String.valueOf(Guess.getGuesses()));
         correctGuessCount.setText(String.valueOf(Guess.getCorrectGuesses()));
     }
+
+    /**
+     * Animates a shape to move, fade and change color.
+     *
+     * @param shape The type of shape to be animated.
+     * @param same If it was correct or not.
+     *             If it was correct it will change to the color green
+     *             and if it is false it will be red.
+     */
     public void shapeAnimation(Shape shape, boolean same){
         guessButton.setDisable(true);
         FadeTransition fadeTransition = new FadeTransition(Duration.seconds(2),shape);
@@ -121,7 +164,6 @@ public class AppController implements Initializable {
         FillTransition fillTransition =
                 new FillTransition(Duration.seconds(2), shape);
         fillTransition.setToValue(same ? Color.GREEN:Color.RED);
-
 
         TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(2), shape);
         translateTransition.setByX(100);
@@ -135,13 +177,30 @@ public class AppController implements Initializable {
         parallelTransition.play();
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    /**
+     * Called at start.
+     * Reads the database and puts them in a linkedList.
+     * The call {@link #updateCounters()} to read this linkedList
+     * and update the displayed information.
+     *
+     */
+    public void fillAppWithData(){
+        Guess.reset();
+        guesses = DBController.getData(conn);
+        updateCounters();
+    }
+
+    /**
+     * Creates the initial connection to the database.
+     * Creates a toggleGroup.
+     * Calls {@link #fillAppWithData()} to fill the listView
+     * with information from the database.
+     */
+    public void initialize() {
         toggleGroup = new ToggleGroup();
         circleRadioButton.setToggleGroup(toggleGroup);
         rectangleRadioButton.setToggleGroup(toggleGroup);
 
-        // DBController.createDBAndTable();
         try {
             conn = DriverManager.getConnection(databaseURL);
         } catch (SQLException e) {

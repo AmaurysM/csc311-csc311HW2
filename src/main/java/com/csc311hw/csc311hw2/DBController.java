@@ -1,8 +1,6 @@
 package com.csc311hw.csc311hw2;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
+import com.csc311hw.csc311hw2.model.Guess;
 import com.healthmarketscience.jackcess.Database;
 import com.healthmarketscience.jackcess.DatabaseBuilder;
 
@@ -11,7 +9,11 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
-
+/**
+ * This class contains methods to handle interactions between
+ * json files and the database, and the Database and AppController.
+ * @author Amaurys De Los Santos Mendez
+ */
 public class DBController {
 
     /**
@@ -34,7 +36,6 @@ public class DBController {
         // Create Table
         //
         try {
-            //Class.forName("com.mysql.jdbc.Driver");
 
             Connection conn = DriverManager.getConnection(databaseURL);
             String sql;
