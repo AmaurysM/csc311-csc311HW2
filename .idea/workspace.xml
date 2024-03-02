@@ -5,16 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9241f6e2-3208-4a2f-b3c7-dd0c0ba11998" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Guesses.accdb" beforeDir="false" afterPath="$PROJECT_DIR$/Guesses.accdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/csc311hw/csc311hw2/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/csc311hw/csc311hw2/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/csc311hw/csc311hw2/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/csc311hw/csc311hw2/controllers/AppController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/csc311hw/csc311hw2/DBController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/csc311hw/csc311hw2/DBController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/csc311hw/csc311hw2/Guess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/csc311hw/csc311hw2/model/Guess.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/csc311hw/csc311hw2/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/csc311hw/csc311hw2/GuessingGame.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/csc311hw/csc311hw2/controllers/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/csc311hw/csc311hw2/controllers/AppController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/csc311hw/csc311hw2/GuessingGame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/csc311hw/csc311hw2/GuessingGame.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +30,13 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -45,11 +48,13 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.App.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/Brave Downloads/CSC/GitKraken/csc311-csc311HW2"
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Downloads/SceneBuilder/SceneBuilder.exe"
   }
 }]]></component>
   <component name="RunManager">
@@ -60,6 +65,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

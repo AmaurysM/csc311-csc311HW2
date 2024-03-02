@@ -3,24 +3,21 @@ package com.csc311hw.csc311hw2.controllers;
 import com.csc311hw.csc311hw2.DBController;
 import com.csc311hw.csc311hw2.model.Guess;
 import javafx.animation.*;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
+import javafx.util.Callback;
 import javafx.util.Duration;
 
-import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.Random;
-import java.util.ResourceBundle;
 
 /**
  * This class contains methods to handle incoming requests from clients
@@ -191,15 +188,45 @@ public class AppController {
     }
 
     /**
+     * Creates a new cellFactory for the listview,
+     * that makes wrong guesses red and correct guesses green.
+     *
+     */
+    public void newCellFactory(){
+        listViewFromDB.setCellFactory(lv -> new ListCell<Guess>() {
+            @Override
+            protected void updateItem(Guess c, boolean empty) {
+                super.updateItem(c, empty);
+                if (empty) {
+                    setText(null);
+                    setStyle("");
+                } else {
+                    setText(c.toString());
+
+                    if (c.isRightGuess()) {
+                        setStyle("-fx-background-color: #549159");
+                    } else {
+                        setStyle("-fx-background-color: #e14e11");
+                    }
+                }
+            }
+        });
+    }
+
+    /**
      * Creates the initial connection to the database.
      * Creates a toggleGroup.
-     * Calls {@link #fillAppWithData()} to fill the listView
+     * Calls {@link #fillAppWithData()} to fill the listView.
+     * Creates a new cell factory for the listView,
+     * this is done by calling {@link #newCellFactory()},
+     * so wrong answers and right answer are color coded.
      * with information from the database.
      */
     public void initialize() {
         toggleGroup = new ToggleGroup();
         circleRadioButton.setToggleGroup(toggleGroup);
         rectangleRadioButton.setToggleGroup(toggleGroup);
+        newCellFactory();
 
         try {
             conn = DriverManager.getConnection(databaseURL);
