@@ -4,6 +4,8 @@ module com.csc311hw.csc311hw2 {
     requires java.sql;
     requires com.healthmarketscience.jackcess;
     requires com.google.gson;
+    requires MaterialFX;
+
 
 
     opens com.csc311hw.csc311hw2 to com.google.gson, javafx.fxml;

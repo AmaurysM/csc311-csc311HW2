@@ -2,6 +2,10 @@ package com.csc311hw.csc311hw2.controllers;
 
 import com.csc311hw.csc311hw2.DBController;
 import com.csc311hw.csc311hw2.model.Guess;
+import io.github.palexdev.materialfx.controls.cell.MFXListCell;
+import io.github.palexdev.materialfx.theming.JavaFXThemes;
+import io.github.palexdev.materialfx.theming.MaterialFXStylesheets;
+import io.github.palexdev.materialfx.theming.UserAgentBuilder;
 import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -12,7 +16,11 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import javafx.util.Callback;
 import javafx.util.Duration;
+import io.github.palexdev.materialfx.controls.MFXButton;
+import io.github.palexdev.materialfx.controls.MFXListView;
+import org.w3c.dom.ls.LSOutput;
 
+import javax.crypto.spec.PSource;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -49,7 +57,7 @@ public class AppController {
     private RadioButton rectangleRadioButton;
 
     @FXML
-    private ListView<Guess> listViewFromDB;
+    private MFXListView<Guess> listViewFromDB;
 
     @FXML
     private TextField totalGuessCount;
@@ -58,7 +66,7 @@ public class AppController {
     private TextField correctGuessCount;
 
     @FXML
-    private Button guessButton;
+    private MFXButton guessButton;
 
     /**
      * Closes the application.
@@ -193,22 +201,17 @@ public class AppController {
      *
      */
     public void newCellFactory(){
-        listViewFromDB.setCellFactory(lv -> new ListCell<Guess>() {
+        listViewFromDB.setCellFactory(lv -> new MFXListCell<Guess>(listViewFromDB,lv) {
             @Override
-            protected void updateItem(Guess c, boolean empty) {
-                super.updateItem(c, empty);
-                if (empty) {
-                    setText(null);
-                    setStyle("");
-                } else {
-                    setText(c.toString());
+            public void updateItem(Guess item) {
+                super.updateItem(item);
 
-                    if (c.isRightGuess()) {
-                        setStyle("-fx-background-color: #549159");
-                    } else {
-                        setStyle("-fx-background-color: #e14e11");
-                    }
+                if (item.isRightGuess()) {
+                    setStyle("-fx-background-color: #549159");
+                } else {
+                    setStyle("-fx-background-color: #e14e11");
                 }
+
             }
         });
     }
@@ -216,11 +219,12 @@ public class AppController {
     /**
      * Creates the initial connection to the database.
      * Creates a toggleGroup.
-     * Calls {@link #fillAppWithData()} to fill the listView.
+     * Calls {@link #fillAppWithData()} to fill the listView,
+     * with information from the database.
      * Creates a new cell factory for the listView,
      * this is done by calling {@link #newCellFactory()},
      * so wrong answers and right answer are color coded.
-     * with information from the database.
+     * Adds CSS to the application.
      */
     public void initialize() {
         toggleGroup = new ToggleGroup();
@@ -228,6 +232,17 @@ public class AppController {
         rectangleRadioButton.setToggleGroup(toggleGroup);
         newCellFactory();
 
+        /*
+        * Sets the style sheet for the application.
+        * This style sheet is from MaterialFXStylesheets
+        * */
+        UserAgentBuilder.builder()
+                .themes(JavaFXThemes.MODENA)
+                .themes(MaterialFXStylesheets.forAssemble(true))
+                .setDeploy(true)
+                .setResolveAssets(true)
+                .build()
+                .setGlobal();
         try {
             conn = DriverManager.getConnection(databaseURL);
         } catch (SQLException e) {
