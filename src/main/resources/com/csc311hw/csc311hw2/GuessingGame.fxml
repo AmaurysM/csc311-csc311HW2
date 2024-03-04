@@ -67,6 +67,11 @@
                                     <Font name="System Bold" size="15.0" />
                                  </font>
                               </MFXButton>
+                              <TextField editable="false" minHeight="0.0" minWidth="0.0" opacity="0.0" prefHeight="0.0" prefWidth="0.0">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </TextField>
                               <Label text="Total Guess Count" textFill="#c7c7c7">
                                  <font>
                                     <Font name="System Bold" size="13.0" />
