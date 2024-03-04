@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
-<?import io.github.palexdev.materialfx.controls.MFXListView?>
 <?import io.github.palexdev.materialfx.controls.MFXRadioButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -17,14 +17,15 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="527.0" prefWidth="605.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.csc311hw.csc311hw2.controllers.AppController">
+<AnchorPane prefHeight="527.0" prefWidth="605.0" styleClass="anchor" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.csc311hw.csc311hw2.controllers.AppController">
    <children>
       <BorderPane prefHeight="386.0" prefWidth="416.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
-            <MenuBar BorderPane.alignment="CENTER">
+            <MenuBar style="-fx-background-color: #555555;" BorderPane.alignment="CENTER">
               <menus>
-                <Menu mnemonicParsing="false" text="File">
+                <Menu mnemonicParsing="false" style="-fx-background-color: #a1a1a1; -fx-background-radius: 1;" text="File">
                   <items>
                     <MenuItem mnemonicParsing="false" onAction="#newGameMenuItem" text="New Game" />
                         <MenuItem mnemonicParsing="false" onAction="#exitMenuItem" text="Exit" />
@@ -38,24 +39,62 @@
                <children>
                   <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" spacing="10.0" HBox.hgrow="NEVER">
                      <children>
-                        <Label text="Choose Shape">
+                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" style="-fx-background-color: #555555; -fx-background-radius: 5;" text="Choose A Shape" textFill="#c7c7c7">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
                         </Label>
                         <Separator prefWidth="200.0" />
-                        <MFXRadioButton fx:id="rectangleRadioButton" maxWidth="1.7976931348623157E308" text="Rectangle" VBox.vgrow="ALWAYS" />
-                        <MFXRadioButton fx:id="circleRadioButton" maxWidth="1.7976931348623157E308" text="Circle" />
+                        <MFXRadioButton fx:id="rectangleRadioButton" maxWidth="1.7976931348623157E308" style="-fx-background-color: #555555; -fx-background-radius: 10;" text="Rectangle" textFill="#c7c7c7" VBox.vgrow="ALWAYS">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font></MFXRadioButton>
+                        <MFXRadioButton fx:id="circleRadioButton" maxWidth="1.7976931348623157E308" style="-fx-background-color: #555555; -fx-background-radius: 10;" text="Circle" textFill="#c7c7c7">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font></MFXRadioButton>
                         <Separator prefWidth="200.0" />
-                        <MFXButton fx:id="guessButton" buttonType="RAISED" depthLevel="LEVEL5" maxWidth="1.7976931348623157E308" onAction="#guessButton" text="Guess" VBox.vgrow="ALWAYS">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </MFXButton>
-                        <Label text="Total Guess Count" />
-                        <TextField fx:id="totalGuessCount" editable="false" promptText="0" />
-                        <Label text="Correct Guess Count" />
-                        <TextField fx:id="correctGuessCount" editable="false" promptText="0" />
+                        <VBox spacing="10.0" style="-fx-background-color: #555555; -fx-background-radius: 2;">
+                           <children>
+                              <MFXButton fx:id="guessButton" buttonType="RAISED" depthLevel="LEVEL5" maxWidth="1.7976931348623157E308" onAction="#guessButton" style="-fx-background-color: #d4190a;" text="Guess">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </MFXButton>
+                              <Label text="Total Guess Count" textFill="#c7c7c7">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="totalGuessCount" editable="false" promptText="0" style="-fx-background-color: #c7c7c7;">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </TextField>
+                              <Label text="Correct Guess Count" textFill="#c7c7c7">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="correctGuessCount" editable="false" promptText="0" style="-fx-background-color: #c7c7c7; -fx-text-fill: red;">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </VBox>
                      </children>
                      <HBox.margin>
                         <Insets />
@@ -66,7 +105,10 @@
                   </VBox>
                   <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" spacing="10.0" HBox.hgrow="NEVER">
                      <children>
-                        <Label text="What is the Shape?" />
+                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" style="-fx-background-color: #555555; -fx-background-radius: 5;" text="What is the Shape?" textFill="#c7c7c7">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font></Label>
                         <Rectangle fx:id="rectangle" arcHeight="5.0" arcWidth="5.0" height="53.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="10.0" width="52.0" />
                         <Circle fx:id="circle" opacity="0.0" radius="27.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="10.0" />
                      </children>
@@ -76,19 +118,19 @@
                   </VBox>
                   <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="130.0" spacing="10.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <MFXButton buttonType="RAISED" depthLevel="LEVEL5" maxWidth="1.7976931348623157E308" onAction="#showGuessButton" text="Show Guess From DB" VBox.vgrow="ALWAYS">
+                        <MFXButton buttonType="RAISED" depthLevel="LEVEL5" maxWidth="1.7976931348623157E308" onAction="#showGuessButton" style="-fx-background-color: #107133;" text="Show Guess From DB" textFill="#c7c7c7" VBox.vgrow="ALWAYS">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
                         </MFXButton>
-                        <MFXListView fx:id="listViewFromDB" hideScrollBars="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-border-radius: 5; -fx-background-radius: 5;" VBox.vgrow="ALWAYS">
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
+                        <ListView fx:id="listViewFromDB" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 5;" stylesheets="@style.css" VBox.vgrow="ALWAYS">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
-                        </MFXListView>
+                        </ListView>
                      </children>
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

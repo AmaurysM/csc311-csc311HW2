@@ -5,12 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9241f6e2-3208-4a2f-b3c7-dd0c0ba11998" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/virtualizedfx-11.2.6.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/csc311hw/csc311hw2/poker-table-background.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/csc311hw/csc311hw2/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Guesses.accdb" beforeDir="false" afterPath="$PROJECT_DIR$/Guesses.accdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/csc311hw/csc311hw2/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/csc311hw/csc311hw2/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/csc311hw/csc311hw2/controllers/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/csc311hw/csc311hw2/controllers/AppController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/csc311hw/csc311hw2/GuessingGame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/csc311hw/csc311hw2/GuessingGame.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -62,13 +62,18 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "AddingExtraThings",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Downloads/SceneBuilder/SceneBuilder.exe",
+    "last_opened_file_path": "D:/Downloads/GITKrakenClones/csc311-csc311HW2/src/main/resources/com/csc311hw/csc311hw2",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Downloads\GITKrakenClones\csc311-csc311HW2\src\main\resources\com\csc311hw\csc311hw2" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="App" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.csc311hw.csc311hw2.App" />

@@ -1,0 +1,23 @@
+.anchor {
+    -fx-background-image:url('file:src/main/resources/com/csc311hw/csc311hw2/poker-table-background.jpg');
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+}
+
+.list-view {
+    -fx-background-color: transparent ;
+}
+
+.list-view .scroll-bar:horizontal .increment-arrow,
+.list-view .scroll-bar:horizontal .decrement-arrow,
+.list-view .scroll-bar:horizontal .increment-button,
+.list-view .scroll-bar:horizontal .decrement-button,
+.list-view .scroll-bar:vertical .increment-arrow,
+.list-view .scroll-bar:vertical .decrement-arrow,
+.list-view .scroll-bar:vertical .increment-button,
+.list-view .scroll-bar:vertical .decrement-button
+{
+    -fx-padding:0;
+    -fx-scale-x: 0;
+}

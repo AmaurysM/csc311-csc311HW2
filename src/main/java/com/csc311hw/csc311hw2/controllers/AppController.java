@@ -8,6 +8,7 @@ import io.github.palexdev.materialfx.theming.MaterialFXStylesheets;
 import io.github.palexdev.materialfx.theming.UserAgentBuilder;
 import javafx.animation.*;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -57,7 +58,7 @@ public class AppController {
     private RadioButton rectangleRadioButton;
 
     @FXML
-    private MFXListView<Guess> listViewFromDB;
+    private ListView<Guess> listViewFromDB;
 
     @FXML
     private TextField totalGuessCount;
@@ -200,7 +201,7 @@ public class AppController {
      * that makes wrong guesses red and correct guesses green.
      *
      */
-    public void newCellFactory(){
+    /*public void newCellFactory(){
         listViewFromDB.setCellFactory(lv -> new MFXListCell<Guess>(listViewFromDB,lv) {
             @Override
             public void updateItem(Guess item) {
@@ -210,10 +211,49 @@ public class AppController {
                     setStyle("-fx-background-color: #549159");
                 } else {
                     setStyle("-fx-background-color: #e14e11");
+
                 }
 
             }
         });
+    }*/
+    public void newCellFactory(){
+        listViewFromDB.setCellFactory(lv -> new ListCell<Guess>() {
+            @Override
+            public void updateItem(Guess item,boolean empty) {
+                super.updateItem(item,empty);
+                if(empty){
+                    setText(null);
+                    setStyle("-fx-background-color: transparent");
+                }else {
+                    /*if (item.isRightGuess()) {
+                        setStyle("""
+                                    -fx-padding: 5px ;
+                                    -fx-background-color: transparent, #549159 ;
+                                    -fx-background-insets: 0px, 2px ;
+                                    """);
+                    } else {
+                        setStyle("""
+                                    -fx-padding: 5px ;
+                                    -fx-background-color: transparent, #e14e11 ;
+                                    -fx-background-insets: 0px, 2px ;
+                                    -fx-background-radius: 5;
+                                    """);
+                        *//*"-fx-padding: 5px ;" +
+                                "-fx-background-color: transparent, #e14e11" +
+                                "-fx-background-insets: 0px, 2px ;");*//*
+                    }*/
+                    setStyle("-fx-padding: 5px ;" +
+                            "-fx-background-insets: 0px, 2px ;" +
+                            "-fx-background-radius: 5;" +
+                            "-fx-background-color: transparent, " +
+                            (item.isRightGuess() ? "#549159":"#e14e11") + ";"
+                    );
+                    setText(item.toString());
+                }
+            }
+        });
+        //listViewFromDB.setStyle("-fx-background-color: transparent");
     }
 
     /**
